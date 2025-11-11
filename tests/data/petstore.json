@@ -1,0 +1,56 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sample API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/pets": {
+      "get": {
+        "security": [{"ApiKeyAuth": []}],
+        "responses": {
+          "200": {
+            "description": "A list of pets"
+          }
+        }
+      },
+      "post": {
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pet created"
+          }
+        }
+      }
+    },
+    "/public": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Public endpoint"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "example": {
+          "name": "Fido",
+          "type": "dog"
+        }
+      }
+    }
+  }
+}
